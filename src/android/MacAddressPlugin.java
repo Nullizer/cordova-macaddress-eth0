@@ -1,4 +1,4 @@
-package com.badrit.MacAddress;
+package com.nullizer.MacAddressEth0;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
