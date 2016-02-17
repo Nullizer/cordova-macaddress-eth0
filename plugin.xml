@@ -2,7 +2,7 @@
 
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
   xmlns:android="http://schemas.android.com/apk/res/android"
-  id="com-badrit-macaddress"
+  id="cordova-macaddress-eth0"
   version="0.2.0">
   <name>MacAddress</name>
   <description>Cordova MacAddress Plugin</description>
@@ -18,26 +18,14 @@
   <platform name="android">
     <config-file target="res/xml/config.xml" parent="/*">
       <feature name="MacAddressPlugin">
-        <param name="android-package" value="com.badrit.MacAddress.MacAddressPlugin"/>
+        <param name="android-package" value="com.nullizer.MacAddressEth0.MacAddressPlugin"/>
       </feature>
     </config-file>
     <config-file target="AndroidManifest.xml" parent="/*">
       <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     </config-file>
 
-    <source-file src="src/android/MacAddressPlugin.java" target-dir="src/com/badrit/MacAddress/" />
+    <source-file src="src/android/MacAddressPlugin.java" target-dir="src/com/nullizer/MacAddressEth0/" />
   </platform>
-
-  <!-- ios -->
-  <platform name="ios">
-   <config-file target="config.xml" parent="/*">
-     <feature name="MacAddressPlugin">
-       <param name="ios-package" value="MacAddressPlugin" />
-     </feature>
-   </config-file>
-
-   <header-file src="src/ios/MacAddressPlugin.h" />
-   <source-file src="src/ios/MacAddressPlugin.m" />
- </platform>
 
 </plugin>

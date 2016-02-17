@@ -7,8 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
-import android.net.wifi.WifiManager;
+import java.io.*;
 
 /**
  * The Class MacAddressPlugin.
@@ -59,20 +58,29 @@ public class MacAddressPlugin extends CordovaPlugin {
         return false;
     }
 
-    /**
-     * Gets the mac address.
-     * 
-     * @return the mac address
-     */
-    private String getMacAddress() {
-        String macAddress = null;
-        WifiManager wm = (WifiManager) this.cordova.getActivity().getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-        macAddress = wm.getConnectionInfo().getMacAddress();
-
-        if (macAddress == null || macAddress.length() == 0) {
-            macAddress = "00:00:00:00:00:00";
+    public static String loadFileAsString(String filePath) throws java.io.IOException{
+        StringBuffer fileData = new StringBuffer(1000);
+        BufferedReader reader = new BufferedReader(new FileReader(filePath));
+        char[] buf = new char[1024];
+        int numRead=0;
+        while((numRead=reader.read(buf)) != -1){
+            String readData = String.valueOf(buf, 0, numRead);
+            fileData.append(readData);
         }
+        reader.close();
+        return fileData.toString();
+    }
 
-        return macAddress;
+    /*
+     * Get the STB MacAddress
+     */
+    public String getMacAddress(){
+        try {
+            return loadFileAsString("/sys/class/net/eth0/address")
+                    .toUpperCase().substring(0, 17);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

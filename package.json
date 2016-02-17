@@ -1,24 +1,22 @@
 {
-  "name": "com-badrit-macaddress",
+  "name": "cordova-macaddress-eth0",
   "version": "0.2.0",
   "description": "Cordova MacAddress Plugin",
   "cordova": {
-    "id": "com-badrit-macaddress",
+    "id": "cordova-macaddress-eth0",
     "platforms": [
-      "android",
-      "ios"
+      "android"
     ]
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mohamed-salah/MacAddress"
+    "url": "https://github.com/Nullizer/cordova-macaddress-eth0"
   },
   "keywords": [
     "cordova",
     "macaddress",
     "ecosystem:cordova",
-    "cordova-android",
-    "cordova-ios"
+    "cordova-android"
   ],
   "license": "MIT"
 }
